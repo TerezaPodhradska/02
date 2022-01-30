@@ -1,190 +1,75 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace prvniHodina
+namespace Magnety
 {
     class Program
     {
         static void Main(string[] args)
         {
 
-            Random x = new Random();
+            //ZAPSÁNÍ MAGNETŮ DO POLE
 
-            /*int temp;
-         for (int j = 0; j <= arr.Length - 2; j++) {
-            for (int i = 0; i <= arr.Length - 2; i++) {
-               if (arr[i] > arr[i + 1]) {
-                  temp= arr[i + 1];
-                  arr[i + 1] = arr[i];
-                  arr[i] = temp;
-               }
-            }
-         }
-         Console.WriteLine("Sorted:");
-         foreach (int p in arr)
-            Console.Write(p + " ");
-         Console.Read();*/
 
-            int[] numbers = new int[5];
+            string popis = "Při zadání magnetů se vrátí délka řetězce. ";
+            string[] pole = VstupStringPole(popis);
 
-            for (int y = 0; y < 5; y++)
+            
+            for (int i = 0; i < pole.Length; i++)
             {
-                numbers[y] = x.Next(50);
+                Console.WriteLine("Položte magnet");
+                pole[i] = Console.ReadLine(); 
+               
             }
 
+            //ZJIŠTĚNÍ DÉLKY ŘETĚZCE
 
-            /*
-              int m = numbers.Max();
-              int place = Array.IndexOf(numbers, m);
-              int l = numbers.Last();
-              numbers[place] = l;
-              numbers[4] = m;
-
-
-            for (int y = 0; y < numbers.Length - 1; y++)
+            int delkaRetezce = 0;
+            for (int p = 0; p < pole.Length - 1; p++)
             {
-                for (int i = 0; i < numbers.Length - 1; i++)
+
+                if (string.Equals(pole[p], pole[p + 1]) == false) {
+
+                    delkaRetezce++;
+
+                 }
+
+            }
+            if(delkaRetezce > 0)
+            {
+                delkaRetezce++;
+            }
+
+
+
+            Console.WriteLine("Řetězec je dlouhý: " + delkaRetezce);
+
+
+            static void Vystup(int[] numbers)
+            {
+
+                foreach (int number in numbers)
                 {
-                    if (numbers[i] > numbers[i + 1])
-                    {
-                        int temp = numbers[i + 1];
-                        numbers[i + 1] = numbers[i];
-                        numbers[i] = temp;
-                    }
+                    Console.WriteLine("\t {0} ", number);
                 }
             }
 
-            foreach (int number in numbers)
+            static string[] VstupStringPole(string popis )
             {
-                Console.WriteLine("\t {0} ", number);
-
-
-            }
-               */
-
-           
-                for (int start = numbers.Length ; start > 0; start--)
+                System.Collections.Generic.List<string> pole = new List<string>();
+                Console.WriteLine(popis);
+                string tmpString = "";
                 {
+                    Console.Write("Zadejte magnety: ");
+                    tmpString = Console.ReadLine();
 
-                    for (int i = 0; i < numbers.Length - 1; i++)
-                    {
+                } while (tmpString == "") ;
 
+                return pole.ToArray();
 
-                        if (numbers[i + 1] < numbers[i])
-                        {
-                            int temp = numbers[i + 1];
-                            numbers[i + 1] = numbers[i];
-                            numbers[i] = temp;
-                            
-
-                        }
-                     }
-
-                }
-
-
-            Vystup(numbers);
-
-
-
-
-
-
-            /*
-            Array.IndexOf(-jmeno array-, -to co v ni hledame-)  (kdyz zadame hodnotu, urci jeji pozici  ve array)
-            Array.Min() /.Max() / .Lenght  /.Average()  /.First()  /.Last()  /.Skip()   /  .Distict().ToArray()  /  .Contains()
-
-             */
-
-
-
-
-
-
-            /*
-
-            for (int i = 0; i <= 10; i++) {
-                Console.WriteLine(i);
             }
-
-            int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-
-
-            for (int n = 0; n < numbers.Length; n ++ )
-            {
-                Console.Write(numbers[n]);
-            }
-
-
-            int x = 11;
-            do
-            {
-                Console.WriteLine(x++);
-            }
-            while (x < 20);
-
-
-            foreach (int n in numbers)
-            {
-                Console.Write(n);
-            }
-
-
-
-
-
-
-            /* 
-            Console.WriteLine("Zadejte sve jmeno:  ");
-            string jmeno = Console.ReadLine();
-            Console.WriteLine("Zadejte svuj vek:  ");
-            int vek = int.Parse(Console.ReadLine());
-
-
-
-            /*  SWITCH
-            switch (vek)
-            {
-                case int n when (vek <= 6):
-                    Console.WriteLine("Jste ve předškolním věku");
-                    break;
-                case int n when ( vek >= 7 & vek <= 17) :
-                    Console.WriteLine("Jste v dorostovém období");
-                    break;
-                case int n when (vek >= 18 & vek <= 59) :
-                    Console.WriteLine("Jste dospělý/á");
-                    break;
-                case int n when (vek >= 60) :
-                    Console.WriteLine("Jste senior.");
-                    break;
-
-
-
-            } */
-
-
-
-            /* IF n ELSE
-            if (vek >= 18)
-            {
-                bool plnoletost = true;
-                Console.WriteLine("Jste plnoletý/á.");
-            } else
-            {
-                bool plnoletost = false;
-                Console.WriteLine("Nejste plnoletý/á.");
-            }
-            */
-        }
-        static void Vystup(int[] numbers)
-        {
-            foreach (int number in numbers)
-            {
-                Console.WriteLine("\t {0} ", number);
-            }
+               
 
         }
     }
 }
-
-
-         
