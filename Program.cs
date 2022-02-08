@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Magnety
 {
@@ -11,20 +12,15 @@ namespace Magnety
             //ZAPSÁNÍ MAGNETŮ DO POLE
 
 
-            string popis = "Při zadání magnetů se vrátí délka řetězce. ";
-            string[] pole = VstupStringPole(popis);
+            
+            string[] pole = VstupStringPole();
 
             
-            for (int i = 0; i < pole.Length; i++)
-            {
-                Console.WriteLine("Položte magnet");
-                pole[i] = Console.ReadLine(); 
-               
-            }
 
             //ZJIŠTĚNÍ DÉLKY ŘETĚZCE
 
             int delkaRetezce = 0;
+
             for (int p = 0; p < pole.Length - 1; p++)
             {
 
@@ -42,26 +38,28 @@ namespace Magnety
 
 
 
-            Console.WriteLine("Řetězec je dlouhý: " + delkaRetezce);
+
+            Vystup(delkaRetezce);
+            
 
 
-            static void Vystup(int[] numbers)
+             static void Vystup(int delkaRetezce)
+             {
+
+                Console.WriteLine("Řetězec je dlouhý: " + delkaRetezce);
+             }
+
+            static string[] VstupStringPole()
             {
-
-                foreach (int number in numbers)
-                {
-                    Console.WriteLine("\t {0} ", number);
-                }
-            }
-
-            static string[] VstupStringPole(string popis )
-            {
-                System.Collections.Generic.List<string> pole = new List<string>();
+                string popis = "Při zadání magnetů se vrátí délka řetězce. ";
                 Console.WriteLine(popis);
+
+                System.Collections.Generic.List<string> pole = new List<string>();
                 string tmpString = "";
                 {
                     Console.Write("Zadejte magnety: ");
                     tmpString = Console.ReadLine();
+                    pole.Append(tmpString);
 
                 } while (tmpString == "") ;
 
